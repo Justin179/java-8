@@ -11,40 +11,26 @@ public class RunnableLambdaExample {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                System.out.println("Inside Runnable 1");
+                System.out.println("T1");
             }
         };
-
         new Thread(runnable).start();
+
 
         //Java 8 - Lambda Syntax
 
         // ()->{}
         //assigning a lambda to a variable.
 
-        Runnable runnableLambda = () -> {System.out.println("Inside Runnable 2");};
-
-        Runnable runnableLambdaMultiStatements = () -> {
-                                        System.out.println("Inside Runnable 3");
-                                        System.out.println("Inside Runnable 3");
+        Runnable t2 = () -> {
+            System.out.println("T2");
         };
+        new Thread(t2).start();
 
-        Runnable runnableLambdaSimple = () -> System.out.println("Inside Runnable 3");
+        Runnable t3 = () -> System.out.println("T3");
+        new Thread(t3).start();
 
-
-        new Thread(runnableLambda).start();
-        new Thread(runnableLambdaMultiStatements).start();
-        new Thread(runnableLambdaSimple).start();
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Inside Runnable 3");
-            }
-        }).start();
-
-        new Thread(() -> System.out.println("Inside Runnable 4")).start();
-
+        new Thread(()-> System.out.println("T4")).start();
 
     }
 }
