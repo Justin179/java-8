@@ -30,7 +30,7 @@ public class StreamsExample {
                 filter(gpaPredicate) // Stream<Student>
                 .collect(Collectors.toMap(Student::getName ,Student::getActivities ));
 
-        System.out.println("studentMap  : " + studentMap);
+//        System.out.println("studentMap  : " + studentMap);
 
         List<String> studentActivities = StudentDataBase.getAllStudents().
                 stream() // Stream<Student>

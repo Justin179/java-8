@@ -24,6 +24,8 @@ public class Student {
 
     }
 
+
+
     public Student(String name, int gradeLevel, double gpa, String gender, int noteBooks, List<String> activities) {
         this.name = name;
         this.gradeLevel = gradeLevel;

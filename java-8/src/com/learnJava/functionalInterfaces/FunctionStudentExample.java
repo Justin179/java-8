@@ -13,21 +13,35 @@ public class FunctionStudentExample {
 
     static Function<List<Student>, Map<String, Double>>  function = (students -> {
 
-        Map<String,Double> studentGradeMap = new HashMap<>();
-        students.forEach((student -> {
-
-            if(PredicateStudentExample.p1.test(student)){
-                studentGradeMap.put(student.getName(),student.getGpa());
+        Map<String,Double> map = new HashMap<>();
+        students.forEach(student -> {
+            if (PredicateStudentExample.p1.test(student)){
+                map.put(student.getName(),student.getGpa());
             }
-        }));
+        });
 
-        return studentGradeMap;
-
+        return map;
     });
-
     public static void main(String[] args) {
 
-        System.out.println(function.apply(StudentDataBase.getAllStudents()));
+        Map<String,Double> map = function.apply(StudentDataBase.getAllStudents());
+        System.out.println(map);
+
 
     }
+
+//    static Function<List<Student>, Map<String, Double>>  function = (students -> {
+//
+//        Map<String,Double> studentGradeMap = new HashMap<>();
+//        students.forEach((student -> {
+//
+//            if(PredicateStudentExample.p1.test(student)){
+//                studentGradeMap.put(student.getName(),student.getGpa());
+//            }
+//        }));
+//
+//        return studentGradeMap;
+//
+//    });
+
 }

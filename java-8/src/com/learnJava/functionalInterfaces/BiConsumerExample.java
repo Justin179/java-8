@@ -8,6 +8,18 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public class BiConsumerExample {
+    public static void main(String[] args) {
+
+        BiConsumer<String,String> biConsumer = (a,b) -> System.out.println(a+" "+b);
+        biConsumer.accept("oo","xx");
+
+        BiConsumer<Integer,Integer> multiply = (a,b) -> System.out.println(a*b);
+        BiConsumer<Integer,Integer> division = (a,b) -> System.out.println(a/b);
+        multiply.andThen(division).accept(10,5);
+
+
+
+    }
 
     public static void nameAndActivities(){
 
@@ -20,32 +32,4 @@ public class BiConsumerExample {
         students.forEach((s) -> studentBiConsumer.accept(s.getName(),s.getActivities()));
     }
 
-    public static void main(String[] args) {
-
-
-        BiConsumer<String, String> biConsumer = (a,b) -> {
-            System.out.println(" a : "  +  a + " b : " + b );
-        };
-        biConsumer.accept("java7" , "java8");
-
-        BiConsumer<Integer, Integer> multiply = (a,b) -> {
-            System.out.println("Multiplication : " + (a * b));
-        };
-
-
-        BiConsumer<Integer, Integer> addition = (a,b) -> {
-            System.out.println("Addition : " + (a + b));
-        };
-
-        BiConsumer<Integer, Integer> division = (a,b) -> {
-            System.out.println("Division : "  + (a / b));
-        };
-
-
-        multiply.andThen(addition).andThen(division).accept(10,5);
-
-
-        nameAndActivities();
-
-    }
 }

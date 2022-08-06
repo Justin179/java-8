@@ -8,50 +8,51 @@ import java.util.function.Consumer;
 
 public class ConsumerExample {
 
-    static Consumer<Student>  c1= p -> System.out.println(p);
+//    static Consumer<Student>  c1= p -> System.out.println(p);
+//    static Consumer<Student>  c2= p -> System.out.print(p.getName().toUpperCase());
+//    static Consumer<Student>  c3= p -> System.out.println(p.getActivities());
 
-    static Consumer<Student>  c2= p -> System.out.print(p.getName().toUpperCase());
-
-    static Consumer<Student>  c3= p -> System.out.println(p.getActivities());
-
+        static Consumer<Student> c0 = s-> System.out.println(s);
+        static Consumer<Student> c1 = s -> System.out.print(s.getName());
+        static Consumer<Student> c2 = s -> System.out.println(s.getActivities());
 
     public static void printName(){
 
-        List<Student> personList = StudentDataBase.getAllStudents();
+        List<Student> allStudents = StudentDataBase.getAllStudents();
 
-        personList.forEach(c1);
+        allStudents.forEach(c0);
+
 
     }
 
     public static void printNameAndActivities(){
         System.out.println("printNameAndActivities : ");
-        List<Student> personList = StudentDataBase.getAllStudents();
-        personList.forEach(c2.andThen(c3));
+
+        List<Student> allStudents = StudentDataBase.getAllStudents();
+        allStudents.forEach(c1.andThen(c2));
+
     }
 
     public static void printNameAndActivitiesUsingCondition(){
         System.out.println("printNameAndActivitiesUsingCondition : ");
         List<Student> personList = StudentDataBase.getAllStudents();
-        personList.forEach((s) -> {
-            if( s.getGradeLevel()>=3 && s.getGpa()>3.9){
-                c2.andThen(c3).accept(s);
+
+        personList.forEach(student -> {
+            if (student.getGradeLevel()>=3 && student.getGpa()>3.9){
+                c1.andThen(c2).andThen(c0).accept(student);
             }
         });
     }
 
     public static void main(String[] args) {
 
-        Consumer<String> c1 = (s) -> System.out.println(s.toUpperCase());
+//        Consumer<String> consumer = s -> System.out.println(s);
+//        consumer.accept("Justin");
 
-        c1.accept("java8");
+//        printName();
 
-        printName();
-        printNameAndActivities();
+//        printNameAndActivities();
+
         printNameAndActivitiesUsingCondition();
-
-
-
-
-
     }
 }

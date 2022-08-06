@@ -21,9 +21,9 @@ public class FunctionExample {
 
         System.out.println("Result of compose : " + upperCase.compose(addSomeString).apply("java8"));
 
-        Function<String,String> abc = Function.identity();
-
-        System.out.println(abc.apply("ABC"));
+//        Function<String,String> abc = Function.identity();
+//
+//        System.out.println(abc.apply("ABC"));
 
 
     }
